@@ -26,10 +26,10 @@
 <div>
     @yield('content')
 </div>
+@include('layout.partials.footer')
 <script>
 
 </script>
-
 <script src="{{asset('js/bootstrap.bundle.js')}}"></script>
 
 </body>
