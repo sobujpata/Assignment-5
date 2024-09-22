@@ -77,9 +77,13 @@
         <span class="side-bar-item-caption">Dashboard</span>
     </a>
 
-    <a href="#" class="side-bar-item">
+    <a href="/users" class="side-bar-item">
         <i class="bi bi-people"></i>
         <span class="side-bar-item-caption">Users</span>
+    </a>   
+    <a href="/cars" class="side-bar-item">
+        <i class="fas fa-car"></i>
+        <span class="side-bar-item-caption">Cars</span>
     </a>   
 
 
