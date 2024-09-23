@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\Admin\usersMenegeController;
+use App\Http\Controllers\Admin\CarController as AdminCarController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\RentalController as AdminRentalController;
 use App\Http\Controllers\Frontend\CarController;
 use App\Http\Controllers\Frontend\RentalController;
 use Illuminate\Support\Facades\Route;
@@ -63,10 +65,21 @@ Route::middleware(['user'])->group(function (){
 //admin dashboard
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin-dashboard',[AdminDashboardController::class,'AdminDashboard'])->name('admin.dashboard')->middleware([TokenVerificationMiddleware::class]);
-    Route::get('/users',[usersMenegeController::class,'index'])->name('user.index')->middleware([TokenVerificationMiddleware::class]);
-    Route::get('/user-create',[usersMenegeController::class,'create'])->name('user.create')->middleware([TokenVerificationMiddleware::class]);
-    Route::post('/user-store',[usersMenegeController::class,'store'])->name('user.store')->middleware([TokenVerificationMiddleware::class]);
-    Route::get('/users-edit/{id}',[usersMenegeController::class,'edit'])->name('user.edit')->middleware([TokenVerificationMiddleware::class]);
-    Route::post('/user-update/{id}',[usersMenegeController::class,'update'])->name('user.update')->middleware([TokenVerificationMiddleware::class]);
-    Route::get('/user-delete/{id}',[usersMenegeController::class,'destroy'])->name('user.destroy')->middleware([TokenVerificationMiddleware::class]);
+    Route::get('/users',[CustomerController::class,'index'])->name('user.index')->middleware([TokenVerificationMiddleware::class]);
+    Route::get('/user-create',[CustomerController::class,'create'])->name('user.create')->middleware([TokenVerificationMiddleware::class]);
+    Route::post('/user-store',[CustomerController::class,'store'])->name('user.store')->middleware([TokenVerificationMiddleware::class]);
+    Route::get('/users-edit/{id}',[CustomerController::class,'edit'])->name('user.edit')->middleware([TokenVerificationMiddleware::class]);
+    Route::post('/user-update/{id}',[CustomerController::class,'update'])->name('user.update')->middleware([TokenVerificationMiddleware::class]);
+    Route::get('/user-delete/{id}',[CustomerController::class,'destroy'])->name('user.destroy')->middleware([TokenVerificationMiddleware::class]);
+    Route::get('/cars-list',action: [AdminCarController::class,'index'])->name('car.index')->middleware([TokenVerificationMiddleware::class]);
+    Route::get('/car-create',action: [AdminCarController::class,'create'])->name('car.create')->middleware([TokenVerificationMiddleware::class]);
+    Route::post('/car-store',action: [AdminCarController::class,'store'])->name('car.store')->middleware([TokenVerificationMiddleware::class]);
+    Route::get('/car-edit/{id}',action: [AdminCarController::class,'edit'])->name('car.edit')->middleware([TokenVerificationMiddleware::class]);
+    Route::put('/car-update/{id}',action: [AdminCarController::class,'update'])->name('car.update')->middleware([TokenVerificationMiddleware::class]);
+    Route::get('/car-delete/{id}',action: [AdminCarController::class,'destroy'])->name('car.destroy')->middleware([TokenVerificationMiddleware::class]);
+
+    Route::get('/car-rental-list',action: [AdminRentalController::class,'index'])->name('car.rental')->middleware([TokenVerificationMiddleware::class]);
+    Route::get('/rental-edit/{id}',action: [AdminRentalController::class,'edit'])->name('rental.edit')->middleware([TokenVerificationMiddleware::class]);
+    Route::put('/rental-update/{id}',action: [AdminRentalController::class,'update'])->name('rental.update')->middleware([TokenVerificationMiddleware::class]);
+    Route::get('/rental-delete/{id}',action: [AdminRentalController::class,'destroy'])->name('rental.destroy')->middleware([TokenVerificationMiddleware::class]);
 });

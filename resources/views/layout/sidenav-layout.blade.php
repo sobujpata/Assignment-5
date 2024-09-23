@@ -41,7 +41,7 @@
 <nav class="navbar fixed-top px-0 shadow-sm bg-white">
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/admin-dashboard">
             <span class="icon-nav m-0 h5" onclick="MenuBarClickHandler()">
                 <img class="nav-logo-sm mx-2"  src="{{asset('images/menu.svg')}}" alt="logo"/>
             </span>
@@ -57,7 +57,7 @@
                         <h6>User Name</h6>
                         <hr class="user-dropdown-divider  p-0"/>
                     </div>
-                    <a href="{{url('/wp-admin/userProfile')}}" class="side-bar-item">
+                    <a href="{{url('/admin-profile')}}" class="side-bar-item">
                         <span class="side-bar-item-caption">Profile</span>
                     </a>
                     <a href="{{url("/logout")}}" class="side-bar-item">
@@ -72,18 +72,22 @@
 
 <div id="sideNavRef" class="side-nav-open">
 
-    <a href="{{url("/>wp-admin/dashboard")}}" class="side-bar-item">
+    <a href="{{url("/admin-dashboard")}}" class="side-bar-item">
         <i class="bi bi-graph-up"></i>
         <span class="side-bar-item-caption">Dashboard</span>
     </a>
 
     <a href="/users" class="side-bar-item">
         <i class="bi bi-people"></i>
-        <span class="side-bar-item-caption">Users</span>
+        <span class="side-bar-item-caption">Manage Users</span>
     </a>   
-    <a href="/cars" class="side-bar-item">
+    <a href="{{ url('/cars-list') }}" class="side-bar-item">
         <i class="fas fa-car"></i>
-        <span class="side-bar-item-caption">Cars</span>
+        <span class="side-bar-item-caption">Manage Cars</span>
+    </a>   
+    <a href="{{ url('/car-rental-list') }}" class="side-bar-item">
+        <i class="fas fa-car"></i>
+        <span class="side-bar-item-caption">Manage Rentals</span>
     </a>   
 
 

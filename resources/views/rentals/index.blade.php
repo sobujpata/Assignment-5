@@ -17,6 +17,7 @@
                             <p>Start Date: {{ $rental->start_date }}</p>
                             <p>End Date: {{ $rental->end_date }}</p>
                             <p>Total Cost: ${{ $rental->total_cost }}</p>
+                            <p>Status: {{ $rental->status }}</p>
 
                             @if($rental->start_date > now())
                                 <form action="{{ route('rentals.destroy', $rental->id) }}" method="POST">

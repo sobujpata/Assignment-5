@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->decimal('total_cost', 8, 2);
+            $table->enum("status", ["Ongoing", "Completed", "Canceled"])->default("Ongoing");
             $table->timestamps();
         });
     }

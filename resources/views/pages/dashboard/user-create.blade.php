@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h3>User Edit</h3>
+                <h3>New User Add</h3>
             
             <form action="{{ route('user.store') }}" method="post">
                 @csrf

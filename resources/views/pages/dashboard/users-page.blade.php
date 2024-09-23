@@ -29,8 +29,8 @@
                         <td>{{ $user->password }}</td>
                         <td>{{ $user->role }}</td>
                         <td>
-                            <a href="/users-edit/{{ $user->id }}" class="btn btn-primary"><i class="fa fa-pen"></i></a>
-                            <a href="/user-delete/{{ $user->id }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <a href="/users-edit/{{ $user->id }}" class="btn btn-primary my-0"><i class="fa fa-pen"></i></a>
+                            <a href="/user-delete/{{ $user->id }}" class="btn btn-danger my-0"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach
