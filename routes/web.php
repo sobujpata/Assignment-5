@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CarController as AdminCarController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\RentalController as AdminRentalController;
 use App\Http\Controllers\Frontend\CarController;
+use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\RentalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -23,6 +24,8 @@ use App\Http\Middleware\TokenVerificationMiddleware;
 */
 
 Route::get('/', [CarController::class, 'index'])->name('cars.index');
+Route::get('/about', [PageController::class, 'index'])->name('rental.about');
+Route::get('/contact', [PageController::class, 'contact'])->name('rental.contact');
 
 //Car Route
 // Route::get('/cars', [CarController::class, 'CarsList']);

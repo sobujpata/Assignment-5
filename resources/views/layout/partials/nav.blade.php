@@ -9,8 +9,8 @@
         <div class="collapse navbar-collapse" id="header01">
             <ul class="navbar-nav ms-auto mt-3 mt-lg-0 mb-3 mb-lg-0 me-4">
                 <li class="nav-item me-4"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
-                <li class="nav-item me-4"><a class="nav-link" href="#">About</a></li>
-                <li class="nav-item me-4"><a class="nav-link" href="#">Contact</a></li>
+                <li class="nav-item me-4"><a class="nav-link" href="{{ url('/about') }}">About</a></li>
+                <li class="nav-item me-4"><a class="nav-link" href="{{ url('/contact') }}">Contact</a></li>
                 @if (Cookie::get('token') == NULL)
                 <li class="nav-item"><a class="nav-link" href="{{url('/userLogin')}}">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="/userRegistration">Singup</a></li>
