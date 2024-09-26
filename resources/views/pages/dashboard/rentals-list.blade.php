@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <h3 align="center">Cars List</h3>
-                <a href="{{ route('car.create') }}" class="btn btn-primary">Add Car</a>
+                {{-- <a href="{{ route('car.create') }}" class="btn btn-primary">Add Car</a> --}}
             </div>
             <table class="table table-striped table-bordered">
                 <thead>
