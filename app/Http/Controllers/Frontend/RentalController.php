@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Car;
 use App\Models\Rental;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\RentalConfirmationToCustomer;
+use App\Mail\RentalNotificationToAdmin;
+use Illuminate\Support\Facades\Mail;
 
 class RentalController extends Controller
 {
@@ -40,11 +44,11 @@ class RentalController extends Controller
 
         // Check availability for the chosen period
         $existingRentals = Rental::where('car_id', $car->id)
-                                ->where(function ($query) use ($request) {
-                                    $query->whereBetween('start_date', [$request->start_date, $request->end_date])
-                                          ->orWhereBetween('end_date', [$request->start_date, $request->end_date]);
-                                })
-                                ->exists();
+                        ->where(function ($query) use ($request) 
+                        {$query->whereBetween('start_date', [$request->start_date, $request->end_date])
+                        ->orWhereBetween('end_date', [$request->start_date, $request->end_date]);
+                        })
+                        ->exists();
 
         if ($existingRentals) {
             return back()->withErrors('This car is not available for the selected period.');
@@ -55,13 +59,19 @@ class RentalController extends Controller
         $total_cost = $days * $car->daily_rent_price;
 
         // Create the rental record
-        Rental::create([
+        $rental = Rental::create([
             'user_id' => $user_id,
             'car_id' => $car->id,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'total_cost' => $total_cost,
         ]);
+        $user = User::find($user_id);
+        // Send email to the customer
+        Mail::to($user->email)->send(new RentalConfirmationToCustomer($rental));
+
+        // Send email to the admin (You can define a static admin email or fetch from the database)
+        Mail::to('bafsalim@gmail.com')->send(new RentalNotificationToAdmin($rental, $user));
 
         return redirect()->route('rentals.index')->with('success', 'Booking successful!');
     }

@@ -35,7 +35,7 @@
                         <td>{{ $car->car_type }}</td>
                         <td>{{ $car->daily_rent_price }}</td>
                         <td>{{ $car->availability }}</td>
-                        <td>{{ $car->image }}</td>
+                        <td><img src="{{ $car->image }}" alt="car image" style="width:90px"></td>
                         <td>
                             <a href="/car-edit/{{ $car->id }}" class="btn btn-primary my-0"><i class="fa fa-pen"></i></a>
                             <a href="/car-delete/{{ $car->id }}" class="btn btn-danger my-0"><i class="fa fa-trash"></i></a>
